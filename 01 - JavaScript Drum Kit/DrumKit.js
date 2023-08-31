@@ -8,6 +8,15 @@ window.addEventListener("keydown", (event) => {
     soundElement.play();
 })
 
+window.addEventListener("keyup", (event) => {
+    var buttonElement = getButton(event.keyCode)
+    var soundElement = getSound(event.keyCode)
+
+    buttonElement.classList.remove("playing")
+    soundElement.pause();
+    soundElement.currentTime = 0;
+})
+
 function getButton(dataKey) {
     var element = document.querySelector("div[data-key='" + dataKey + "']");
     return element;
