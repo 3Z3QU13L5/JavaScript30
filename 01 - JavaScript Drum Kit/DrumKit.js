@@ -4,6 +4,8 @@ window.addEventListener("keydown", (event) => {
     var soundElement = getSound(event.keyCode)
     console.log({ buttonElement, soundElement })
 
+    buttonElement.classList.add("playing")
+    soundElement.play();
 })
 
 function getButton(dataKey) {
