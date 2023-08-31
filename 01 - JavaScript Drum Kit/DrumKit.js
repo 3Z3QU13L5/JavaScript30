@@ -1,24 +1,33 @@
 window.addEventListener("keydown", (event) => {
-    console.log(event.keyCode)
-    var buttonElement = getButton(event.keyCode)
-    var soundElement = getSound(event.keyCode)
-    console.log({ buttonElement, soundElement })
+    var buttonElement = getButton(event.keyCode);
+    var soundElement = getSound(event.keyCode);
 
-    buttonElement.classList.add("playing")
-    soundElement.play();
+    if (buttonElement == null) {
+        console.log("That wasn't a key from the Drum")
+    } else {
+        buttonElement.classList.add("playing")
+        soundElement.play();
+    }
 })
 
 window.addEventListener("keyup", (event) => {
-    var buttonElement = getButton(event.keyCode)
-    var soundElement = getSound(event.keyCode)
+    var buttonElement = getButton(event.keyCode);
+    var soundElement = getSound(event.keyCode);
 
-    buttonElement.classList.remove("playing")
-    soundElement.pause();
-    soundElement.currentTime = 0;
+    if (buttonElement == null) {
+        console.log("That wasn't a key from the Drum")
+    } else {
+        buttonElement.classList.remove("playing")
+        soundElement.pause();
+        soundElement.currentTime = 0;
+    }
+
 })
+
 
 function getButton(dataKey) {
     var element = document.querySelector("div[data-key='" + dataKey + "']");
+    console.log(element)
     return element;
 }
 
